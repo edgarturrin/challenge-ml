@@ -1,0 +1,173 @@
+[
+  {
+    "id":"MLA32427104",
+    "title":"Samsung Galaxy A15 128 GB Negro Azulado 4 GB RAM",
+    "description":"Samsung Galaxy A15 2023 con pantalla de 6.5″ HD+ de 90 Hz, triple cámara (50 MP + 5 MP ultra gran angular + 2 MP macro), 13 MP frontal, procesador MediaTek Helio G85, 4 GB de RAM, 128 GB de almacenamiento expandible y batería de 5 000 mAh con carga rápida 25 W.",
+    "price":329999,
+    "stock":91,
+    "discount":15,
+    "installments":"Hasta 18 cuotas sin interés",
+    "preferred_image":"https://http2.mlstatic.com/D_NQ_NP_633374-MLA82692302836_032025-O.webp",
+    "images":[
+      "https://http2.mlstatic.com/D_NQ_NP_671639-MLA82692302840_032025-O.webp",
+      "https://http2.mlstatic.com/D_NQ_NP_737323-MLA74420223492_022024-O.webp"
+    ],
+    "features":[
+      {
+        "label":"Pantalla",
+        "value":"6.5″ HD+ 90 Hz"
+      },
+      {
+        "label":"Procesador",
+        "value":"MediaTek Helio G85"
+      },
+      {
+        "label":"Cámara Principal",
+        "value":"50 MP + 5 MP ultra gran angular + 2 MP macro"
+      },
+      {
+        "label":"Cámara Frontal",
+        "value":"13 MP"
+      },
+      {
+        "label":"Batería",
+        "value":"5 000 mAh con carga rápida 25 W"
+      },
+      {
+        "label":"Memoria",
+        "value":"4 GB RAM + 128 GB interna (expandible)"
+      }
+    ],
+    "seller":{
+      "id":12345678,
+      "name":"Samsung Oficial",
+      "reputation":{
+        "level":"platinum",
+        "transactions_completed":156789,
+        "rating":4.9
+      },
+      "is_official_store":true,
+      "image":"https://http2.mlstatic.com/D_NQ_NP_887675-MLA74823588370_032024-G.jpg"
+    },
+    "payment_methods":{
+      "installments_bold":"18 cuotas sin interés",
+      "cardless_installments":[
+        {
+          "name":"Mercado Pago",
+          "logo":"https://http2.mlstatic.com/storage/logos-api-admin/f3e8e940-f549-11ef-bad6-e9962bcd76e5-m.svg"
+        }
+      ],
+      "credit_cards":[
+        {
+          "name":"Visa",
+          "logo":"https://http2.mlstatic.com/storage/logos-api-admin/a5f047d0-9be0-11ec-aad4-c3381f368aaf-m.svg"
+        },
+        {
+          "name":"Mastercard",
+          "logo":"https://http2.mlstatic.com/storage/logos-api-admin/aa2b8f70-5c85-11ec-ae75-df2bef173be2-m.svg"
+        },
+        {
+          "name":"American Express",
+          "logo":"https://http2.mlstatic.com/storage/logos-api-admin/b4785730-c13f-11ee-b4b3-bb9a23b70639-m.svg"
+        }
+      ],
+      "debit_cards":[
+        {
+          "name":"Visa Débito",
+          "logo":"https://http2.mlstatic.com/storage/logos-api-admin/312238e0-571b-11e8-823a-758d95db88db-m.svg"
+        },
+        {
+          "name":"Mastercard Débito",
+          "logo":"https://http2.mlstatic.com/storage/logos-api-admin/157dce60-571b-11e8-95d8-631c1a9a92a9-m.svg"
+        }
+      ],
+      "more":"Ver más medios de pago"
+    }
+  },
+  {
+    "id":"MLA31043809",
+    "title":"Samsung Galaxy Tab A9 64 GB 4 GB RAM Color Gris",
+    "description":"Tablet Samsung Galaxy Tab A9 con pantalla de 8.7″ (1340 × 800), procesador Mediatek octa-core 2.2 GHz, 4 GB de RAM, 64 GB internos (expandible), batería de 5 100 mAh, Bluetooth 5.2 y Android 13.",
+    "price":199999,
+    "stock":1881,
+    "discount":10,
+    "installments":"Hasta 6 cuotas sin interés",
+    "color":"Gris",
+    "preferred_image":"https://http2.mlstatic.com/D_NQ_NP_892038-MLU74328290469_012024-O.webp",
+    "images":[
+      "https://http2.mlstatic.com/D_NQ_NP_888123-MLA81331517533_122024-O.webp",
+      "https://http2.mlstatic.com/D_NQ_NP_843822-MLU74328211801_012024-O.webp"
+    ],
+    "features":[
+      {
+        "label":"Pantalla",
+        "value":"8.7″ 1340 × 800"
+      },
+      {
+        "label":"Procesador",
+        "value":"Mediatek octa-core 2.2 GHz"
+      },
+      {
+        "label":"Memoria RAM",
+        "value":"4 GB"
+      },
+      {
+        "label":"Almacenamiento",
+        "value":"64 GB (expandible con microSD)"
+      },
+      {
+        "label":"Batería",
+        "value":"5 100 mAh"
+      },
+      {
+        "label":"Conectividad",
+        "value":"Bluetooth 5.2"
+      }
+    ],
+    "seller":{
+      "id":12345678,
+      "name":"Samsung Oficial",
+      "reputation":{
+        "level":"platinum",
+        "transactions_completed":156789,
+        "rating":4.9
+      },
+      "is_official_store":true,
+      "image":"https://http2.mlstatic.com/D_NQ_NP_887675-MLA74823588370_032024-G.jpg"
+    },
+    "payment_methods":{
+      "installments_bold":"6 cuotas sin interés",
+      "cardless_installments":[
+        {
+          "name":"Mercado Pago",
+          "logo":"https://http2.mlstatic.com/storage/logos-api-admin/f3e8e940-f549-11ef-bad6-e9962bcd76e5-m.svg"
+        }
+      ],
+      "credit_cards":[
+        {
+          "name":"Visa",
+          "logo":"https://http2.mlstatic.com/storage/logos-api-admin/a5f047d0-9be0-11ec-aad4-c3381f368aaf-m.svg"
+        },
+        {
+          "name":"Mastercard",
+          "logo":"https://http2.mlstatic.com/storage/logos-api-admin/aa2b8f70-5c85-11ec-ae75-df2bef173be2-m.svg"
+        },
+        {
+          "name":"American Express",
+          "logo":"https://http2.mlstatic.com/storage/logos-api-admin/b4785730-c13f-11ee-b4b3-bb9a23b70639-m.svg"
+        }
+      ],
+      "debit_cards":[
+        {
+          "name":"Visa Débito",
+          "logo":"https://http2.mlstatic.com/storage/logos-api-admin/312238e0-571b-11e8-823a-758d95db88db-m.svg"
+        },
+        {
+          "name":"Mastercard Débito",
+          "logo":"https://http2.mlstatic.com/storage/logos-api-admin/157dce60-571b-11e8-95d8-631c1a9a92a9-m.svg"
+        }
+      ],
+      "more":"Ver más medios de pago"
+    }
+  }
+]

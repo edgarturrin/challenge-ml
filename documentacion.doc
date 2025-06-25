@@ -1,0 +1,20 @@
+Documentación del Proyecto
+
+Opciones de Diseño
+
+Para el desarrollo del proyecto opté por un enfoque empresarial, simulando un entorno en la nube utilizando Docker Compose. Esto me permitió diseñar una arquitectura de microservicios local y fácilmente desplegable. El sistema está compuesto por dos aplicaciones principales:
+
+Frontend: Implementado con React bajo modalidad Server Side Rendering (SSR), e integrado con un Backend for Frontend (BFF) desarrollado con Express.js. Esta separación permite una mejor organización del código y facilita el control de las respuestas al cliente.
+
+Backend: Desarrollado en Spring Boot utilizando Java 17, proporciona la lógica de negocio y expone una API REST que es consumida por el BFF.
+
+Docker Compose: Utilizado para orquestar los servicios, facilitando su levantamiento simultáneo, aislado y reproducible en cualquier entorno local o de CI/CD.
+
+Durante el desarrollo se hizo uso extensivo de documentación oficial de los frameworks y herramientas empleadas, además de contar con la asistencia de inteligencias artificiales como Cursor AI , Junie y ChatGPT, que fueron claves para acelerar la resolución de problemas puntuales.
+
+Desafíos y Resolución
+
+El mayor desafío técnico fue configurar correctamente los archivos bundle.js y bundle.css generados por React SSR. Este proceso implicó múltiples pruebas debido a errores relacionados con la carga de scripts, el orden de ejecución, y la integración con el servidor Express.
+
+Inicialmente, el uso de inteligencia artificial sobre el proyecto completo no resultó efectivo. Para abordar este problema, decidí crear un entorno aislado donde pedía a la IA que generara el proyecto desde cero. Este enfoque permitió identificar con mayor claridad las configuraciones necesarias, evidenciando que los mejores resultados se obtienen al realizar preguntas concretas y acotadas a los agentes de IA.
+

@@ -1,0 +1,432 @@
+openapi: 3.0.3
+info:
+  title: Challenge ML API CORE
+  description: |
+    API RESTful para el challenge de MercadoLibre que proporciona información de productos.
+    
+    ## Características
+    - Obtener listado de productos
+    - Obtener detalles completos de un producto específico
+
+    ## Tecnologías
+    - Spring Boot 3.5.3
+    - Java 17
+    - Almacenamiento en JSON local
+
+  version: 1.0.0
+servers:
+  - url: http://localhost:8080
+    description: Servidor de desarrollo local
+
+paths:
+  /products/search:
+    get:
+      summary: Obtener listado de productos
+      description: |
+        Retorna una lista de todos los productos disponibles con información básica.
+        Incluye ID, título, precio e imagen principal de cada producto.
+      operationId: searchProducts
+      tags:
+        - Productos
+      responses:
+        '200':
+          description: Lista de productos obtenida exitosamente
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseProductList'
+              example:
+                status: 200
+                message: "Products retrieved successfully"
+                data:
+                  - id: "MLA32427104"
+                    title: "Samsung Galaxy A15 128 GB Negro Azulado 4 GB RAM"
+                    price: 329999
+                    image: "https://http2.mlstatic.com/D_NQ_NP_633374-MLA82692302836_032025-O.webp"
+                  - id: "MLA31043809"
+                    title: "Samsung Galaxy Tab A9 64 GB 4 GB RAM Color Gris"
+                    price: 199999
+                    image: "https://http2.mlstatic.com/D_NQ_NP_892038-MLU74328290469_012024-O.webp"
+        '500':
+          description: Error interno del servidor
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                status: 500
+                error: "Internal Server Error"
+                message: "An unexpected error occurred"
+                path: "/products/search"
+
+  /products/{id}:
+    get:
+      summary: Obtener detalles de un producto
+      description: |
+        Retorna información completa de un producto específico incluyendo:
+        - Imágenes del producto
+        - Información detallada (precio, stock, descuentos)
+        - Características técnicas
+        - Información del vendedor
+        - Métodos de pago disponibles
+      operationId: getProductById
+      tags:
+        - Productos
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: ID único del producto
+          schema:
+            type: string
+            example: "MLA32427104"
+      responses:
+        '200':
+          description: Detalles del producto obtenidos exitosamente
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseProductDetail'
+              example:
+                status: 200
+                message: "Product details retrieved successfully"
+                data:
+                  id: "MLA32427104"
+                  title: "Samsung Galaxy A15 128 GB Negro Azulado 4 GB RAM"
+                  description: "Samsung Galaxy A15 2023 con pantalla de 6.5″ HD+ de 90 Hz, triple cámara (50 MP + 5 MP ultra gran angular + 2 MP macro), 13 MP frontal, procesador MediaTek Helio G85, 4 GB de RAM, 128 GB de almacenamiento expandible y batería de 5 000 mAh con carga rápida 25 W."
+                  price: 329999
+                  stock: 91
+                  discount: 15
+                  installments: "Hasta 18 cuotas sin interés"
+                  preferred_image: "https://http2.mlstatic.com/D_NQ_NP_633374-MLA82692302836_032025-O.webp"
+                  images:
+                    - "https://http2.mlstatic.com/D_NQ_NP_671639-MLA82692302840_032025-O.webp"
+                    - "https://http2.mlstatic.com/D_NQ_NP_737323-MLA74420223492_022024-O.webp"
+                  features:
+                    - label: "Pantalla"
+                      value: "6.5″ HD+ 90 Hz"
+                    - label: "Procesador"
+                      value: "MediaTek Helio G85"
+                  seller:
+                    id: 12345678
+                    name: "Samsung Oficial"
+                    reputation:
+                      level: "platinum"
+                      transactions_completed: 156789
+                      rating: 4.9
+                    is_official_store: true
+                    image: "https://http2.mlstatic.com/D_NQ_NP_887675-MLA74823588370_032024-G.jpg"
+                  payment_methods:
+                    installments_bold: "18 cuotas sin interés"
+                    cardless_installments:
+                      - name: "Mercado Pago"
+                        logo: "https://http2.mlstatic.com/storage/logos-api-admin/f3e8e940-f549-11ef-bad6-e9962bcd76e5-m.svg"
+                    credit_cards:
+                      - name: "Visa"
+                        logo: "https://http2.mlstatic.com/storage/logos-api-admin/a5f047d0-9be0-11ec-aad4-c3381f368aaf-m.svg"
+                    debit_cards:
+                      - name: "Visa Débito"
+                        logo: "https://http2.mlstatic.com/storage/logos-api-admin/312238e0-571b-11e8-823a-758d95db88db-m.svg"
+                    more: "Ver más medios de pago"
+        '404':
+          description: Producto no encontrado
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                status: 404
+                error: "Not Found"
+                message: "Product with id MLA99999999 not found"
+                path: "/products/MLA99999999"
+        '500':
+          description: Error interno del servidor
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                status: 500
+                error: "Internal Server Error"
+                message: "An unexpected error occurred"
+                path: "/products/MLA32427104"
+
+components:
+  schemas:
+    ApiResponseProductList:
+      type: object
+      properties:
+        status:
+          type: integer
+          description: Código de estado HTTP
+          example: 200
+        message:
+          type: string
+          description: Mensaje descriptivo de la respuesta
+          example: "Products retrieved successfully"
+        data:
+          type: array
+          description: Lista de productos
+          items:
+            $ref: '#/components/schemas/Product'
+      required:
+        - status
+        - message
+        - data
+
+    ApiResponseProductDetail:
+      type: object
+      properties:
+        status:
+          type: integer
+          description: Código de estado HTTP
+          example: 200
+        message:
+          type: string
+          description: Mensaje descriptivo de la respuesta
+          example: "Product details retrieved successfully"
+        data:
+          $ref: '#/components/schemas/ProductDetail'
+      required:
+        - status
+        - message
+        - data
+
+    Product:
+      type: object
+      description: Información básica de un producto
+      properties:
+        id:
+          type: string
+          description: ID único del producto
+          example: "MLA32427104"
+        title:
+          type: string
+          description: Título del producto
+          example: "Samsung Galaxy A15 128 GB Negro Azulado 4 GB RAM"
+        price:
+          type: integer
+          description: Precio en centavos
+          example: 329999
+        image:
+          type: string
+          description: URL de la imagen principal
+          example: "https://http2.mlstatic.com/D_NQ_NP_633374-MLA82692302836_032025-O.webp"
+      required:
+        - id
+        - title
+        - price
+        - image
+
+    ProductDetail:
+      type: object
+      description: Información completa de un producto
+      allOf:
+        - $ref: '#/components/schemas/Product'
+        - type: object
+          properties:
+            description:
+              type: string
+              description: Descripción detallada del producto
+              example: "Samsung Galaxy A15 2023 con pantalla de 6.5″ HD+ de 90 Hz..."
+            stock:
+              type: integer
+              description: Cantidad disponible en stock
+              example: 91
+            discount:
+              type: integer
+              description: Porcentaje de descuento
+              example: 15
+            installments:
+              type: string
+              description: Información de cuotas
+              example: "Hasta 18 cuotas sin interés"
+            preferred_image:
+              type: string
+              description: URL de la imagen preferida
+              example: "https://http2.mlstatic.com/D_NQ_NP_633374-MLA82692302836_032025-O.webp"
+            images:
+              type: array
+              description: Lista de todas las imágenes del producto
+              items:
+                type: string
+              example:
+                - "https://http2.mlstatic.com/D_NQ_NP_671639-MLA82692302840_032025-O.webp"
+                - "https://http2.mlstatic.com/D_NQ_NP_737323-MLA74420223492_022024-O.webp"
+            color:
+              type: string
+              description: Color del producto
+              example: "Negro Azulado"
+            memory:
+              type: string
+              description: Memoria del producto
+              example: "128 GB"
+            features:
+              type: array
+              description: Características técnicas del producto
+              items:
+                $ref: '#/components/schemas/Feature'
+            seller:
+              $ref: '#/components/schemas/Seller'
+            payment_methods:
+              $ref: '#/components/schemas/PaymentMethods'
+          required:
+            - description
+            - stock
+            - images
+            - seller
+            - payment_methods
+
+    Feature:
+      type: object
+      description: Característica técnica del producto
+      properties:
+        label:
+          type: string
+          description: Etiqueta de la característica
+          example: "Pantalla"
+        value:
+          type: string
+          description: Valor de la característica
+          example: "6.5″ HD+ 90 Hz"
+      required:
+        - label
+        - value
+
+    Seller:
+      type: object
+      description: Información del vendedor
+      properties:
+        id:
+          type: integer
+          description: ID del vendedor
+          example: 12345678
+        name:
+          type: string
+          description: Nombre del vendedor
+          example: "Samsung Oficial"
+        reputation:
+          $ref: '#/components/schemas/Reputation'
+        is_official_store:
+          type: boolean
+          description: Indica si es tienda oficial
+          example: true
+        image:
+          type: string
+          description: URL de la imagen del vendedor
+          example: "https://http2.mlstatic.com/D_NQ_NP_887675-MLA74823588370_032024-G.jpg"
+      required:
+        - id
+        - name
+        - reputation
+        - is_official_store
+        - image
+
+    Reputation:
+      type: object
+      description: Información de reputación del vendedor
+      properties:
+        level:
+          type: string
+          description: Nivel de reputación
+          example: "platinum"
+        transactions_completed:
+          type: integer
+          description: Número de transacciones completadas
+          example: 156789
+        rating:
+          type: number
+          format: float
+          description: Calificación promedio
+          example: 4.9
+      required:
+        - level
+        - transactions_completed
+        - rating
+
+    PaymentMethods:
+      type: object
+      description: Métodos de pago disponibles
+      properties:
+        installments_bold:
+          type: string
+          description: Texto destacado de cuotas
+          example: "18 cuotas sin interés"
+        cardless_installments:
+          type: array
+          description: Métodos de pago sin tarjeta
+          items:
+            $ref: '#/components/schemas/PaymentMethod'
+        credit_cards:
+          type: array
+          description: Tarjetas de crédito aceptadas
+          items:
+            $ref: '#/components/schemas/PaymentMethod'
+        debit_cards:
+          type: array
+          description: Tarjetas de débito aceptadas
+          items:
+            $ref: '#/components/schemas/PaymentMethod'
+        more:
+          type: string
+          description: Enlace para ver más métodos de pago
+          example: "Ver más medios de pago"
+      required:
+        - installments_bold
+        - cardless_installments
+        - credit_cards
+        - debit_cards
+        - more
+
+    PaymentMethod:
+      type: object
+      description: Método de pago individual
+      properties:
+        name:
+          type: string
+          description: Nombre del método de pago
+          example: "Visa"
+        logo:
+          type: string
+          description: URL del logo del método de pago
+          example: "https://http2.mlstatic.com/storage/logos-api-admin/a5f047d0-9be0-11ec-aad4-c3381f368aaf-m.svg"
+      required:
+        - name
+        - logo
+
+    ErrorResponse:
+      type: object
+      description: Respuesta de error estándar
+      properties:
+        status:
+          type: integer
+          description: Código de estado HTTP
+          example: 404
+        error:
+          type: string
+          description: Tipo de error
+          example: "Not Found"
+        message:
+          type: string
+          description: Mensaje descriptivo del error
+          example: "Product with id MLA99999999 not found"
+        path:
+          type: string
+          description: Ruta de la solicitud
+          example: "/products/MLA99999999"
+      required:
+        - status
+        - error
+        - message
+        - path
+
+tags:
+  - name: Productos
+    description: Operaciones relacionadas con productos
+    externalDocs:
+      description: Más información sobre productos
+      url: https://developers.mercadolibre.com.ar/es_ar/api-docs-es
+
+externalDocs:
+  description: Documentación adicional
+  url: https://github.com/challenge-ml/backend 

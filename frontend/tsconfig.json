@@ -1,0 +1,25 @@
+{
+  "compilerOptions": {
+    "target": "esnext", /* Set the JavaScript language version for emitted JavaScript and include compatible library declarations. */
+    "module": "nodenext", /* Specify what module code is generated. */
+    "outDir": "./dist", /* Specify an output folder for all emitted files. */
+    "rootDir": ".",
+    "jsx": "react-jsx",
+    "esModuleInterop": true, /* Emit additional JavaScript to ease support for importing CommonJS modules. This enables 'allowSyntheticDefaultImports' for type compatibility. */
+    "forceConsistentCasingInFileNames": true, /* Ensure that casing is correct in imports. */
+    "skipLibCheck": true, /* Skip type checking all .d.ts files. */
+    "moduleResolution": "nodenext",
+    "allowJs": true,
+    "noImplicitAny": false,
+    "strict": false
+  },
+  "include": [
+    "src/**/*",
+    "public/**/*"
+  ],
+  "exclude": [
+    "node_modules",
+    "dist",
+    "*.config.js",
+  ]
+}

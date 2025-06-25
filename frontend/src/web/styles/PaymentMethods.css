@@ -1,0 +1,122 @@
+.pm-box {
+  background: #fff;
+  border: 1px solid #ededed;
+  border-radius: 12px;
+  padding: 24px 20px 20px 20px;
+  margin-bottom: 24px;
+  box-shadow: 0 1px 4px #0001;
+  width: 100%;
+}
+
+.pm-title {
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 18px;
+  color: #222;
+}
+
+.pm-cuotas {
+  display: flex;
+  align-items: center;
+  background: #00b14f;
+  color: #fff;
+  border-radius: 6px;
+  padding: 12px 16px;
+  font-size: 16px;
+  font-weight: 500;
+  margin-bottom: 18px;
+  gap: 10px;
+}
+
+.pm-cuotas-icon {
+  width: 24px;
+  height: 24px;
+}
+
+.pm-section {
+  margin-bottom: 14px;
+}
+
+.pm-label {
+  font-size: 15px;
+  color: #222;
+  font-weight: 500;
+  margin-bottom: 6px;
+}
+
+.pm-logos {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.pm-logo {
+  height: 28px;
+  width: auto;
+  background: #fff;
+  border-radius: 4px;
+  border: 1px solid #eee;
+  padding: 2px 4px;
+}
+
+.pm-more {
+  color: #3483fa;
+  font-size: 15px;
+  text-decoration: none;
+  margin-top: 8px;
+  display: inline-block;
+}
+
+.pm-more:hover {
+  text-decoration: underline;
+}
+
+/* --- RESPONSIVE STYLES --- */
+@media (max-width: 900px) {
+  .pm-box {
+    padding: 14px 8px 10px 8px;
+  }
+  .pm-title {
+    font-size: 15px;
+  }
+  .pm-cuotas {
+    font-size: 13px;
+    padding: 8px 8px;
+  }
+  .pm-label {
+    font-size: 13px;
+  }
+  .pm-logo {
+    height: 20px;
+    padding: 1px 2px;
+  }
+}
+
+@media (max-width: 600px) {
+  .pm-box {
+    padding: 8px 2px 6px 2px;
+    border-radius: 8px;
+  }
+  .pm-title {
+    font-size: 13px;
+    margin-bottom: 8px;
+  }
+  .pm-cuotas {
+    font-size: 11px;
+    padding: 4px 4px;
+    gap: 4px;
+  }
+  .pm-label {
+    font-size: 11px;
+  }
+  .pm-logo {
+    height: 14px;
+  }
+  .pm-logos {
+    gap: 4px;
+  }
+  .pm-more {
+    font-size: 11px;
+  }
+} 

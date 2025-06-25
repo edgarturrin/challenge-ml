@@ -1,0 +1,166 @@
+.ml-info {
+  flex: 1;
+  min-width: 340px;
+  max-width: 440px;
+}
+
+.ml-info__sold {
+  color: #00a650;
+  font-weight: 600;
+  font-size: 13px;
+  margin-bottom: 4px;
+}
+
+.ml-info__title {
+  font-size: 26px;
+  margin: 6px 0 14px 0;
+  font-weight: 500;
+  line-height: 1.2;
+}
+
+.ml-info__price-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 2px;
+}
+
+.ml-info__price {
+  font-size: 36px;
+  font-weight: 700;
+  letter-spacing: -1px;
+}
+
+.ml-info__discount {
+  color: #00a650;
+  font-weight: 600;
+  font-size: 18px;
+  margin-top: 6px;
+}
+
+.ml-info__installments {
+  color: #3483fa;
+  margin: 8px 0 0 0;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.ml-info__stock {
+  margin: 8px 0 0 0;
+  color: #00a650;
+  font-size: 15px;
+  font-weight: 500;
+}
+.ml-info__stock--out {
+  color: #ff0000;
+}
+
+.ml-info__actions {
+  margin: 20px 0 18px 0;
+  display: flex;
+  gap: 10px;
+}
+
+.ml-info__buy {
+  background: #3483fa;
+  color: #fff;
+  border: 0;
+  border-radius: 6px;
+  padding: 13px 36px;
+  font-size: 18px;
+  font-weight: 700;
+  cursor: pointer;
+  margin-right: 10px;
+  box-shadow: 0 1px 4px #3483fa22;
+}
+
+.ml-info__cart {
+  background: #fff;
+  color: #3483fa;
+  border: 2px solid #3483fa;
+  border-radius: 6px;
+  padding: 13px 36px;
+  font-size: 18px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.ml-info__props {
+  margin: 18px 0 0 0;
+  font-size: 16px;
+  color: #333;
+  display: flex;
+  gap: 24px;
+}
+
+.ml-info__features {
+  margin: 28px 0 0 0;
+}
+
+.ml-info__features-title {
+  font-size: 17px;
+  margin-bottom: 8px;
+  font-weight: 600;
+  color: #333;
+}
+
+.ml-info__features-list {
+  padding-left: 20px;
+  margin: 0;
+  color: #444;
+  font-size: 15px;
+  line-height: 1.7;
+}
+.ml-info__features-list li {
+  margin-bottom: 2px;
+}
+
+/* --- RESPONSIVE STYLES --- */
+@media (max-width: 900px) {
+  .ml-info {
+    min-width: 220px;
+    max-width: 100%;
+  }
+  .ml-info__title {
+    font-size: 20px;
+  }
+  .ml-info__price {
+    font-size: 28px;
+  }
+  .ml-info__buy, .ml-info__cart {
+    padding: 10px 20px;
+    font-size: 15px;
+  }
+  .ml-info__props {
+    gap: 12px;
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 600px) {
+  .ml-info {
+    min-width: 0;
+    padding: 0 4px;
+  }
+  .ml-info__title {
+    font-size: 16px;
+  }
+  .ml-info__price {
+    font-size: 20px;
+  }
+  .ml-info__buy, .ml-info__cart {
+    padding: 8px 8px;
+    font-size: 13px;
+  }
+  .ml-info__props {
+    flex-direction: column;
+    gap: 6px;
+    font-size: 13px;
+  }
+  .ml-info__features-title {
+    font-size: 14px;
+  }
+  .ml-info__features-list {
+    font-size: 12px;
+  }
+} 

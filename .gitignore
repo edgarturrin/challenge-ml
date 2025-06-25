@@ -1,0 +1,21 @@
+# Backend Spring Boot/Gradle
+backend/.gradle/
+backend/build/
+backend/gradle/
+backend/gradlew
+backend/gradlew.bat
+backend/gradle-wrapper.jar
+backend/gradle-wrapper.properties
+
+# Frontend
+frontend/dist/
+frontend/node_modules/
+frontend/coverage/
+frontend/package-lock.json
+
+### IntelliJ IDEA ###
+.idea
+
+### VS Code ###
+.vscode/
+
