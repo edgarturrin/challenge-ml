@@ -1,7 +1,7 @@
 import React from "react";
 
 const ProductInfo = ({
-  title, price, discount, installments, stock, color, memory, features
+  title, price, discount, installments, stock, color, memory, features, onAddToCart
 }) => (
   <div className="ml-info">
     <div className="ml-info__sold">Nuevo | +500 vendidos</div>
@@ -14,7 +14,7 @@ const ProductInfo = ({
     <div className={`ml-info__stock${stock > 0 ? '' : ' ml-info__stock--out'}`}>{stock > 0 ? `Stock disponible (${stock})` : "Sin stock"}</div>
     <div className="ml-info__actions">
       <button className="ml-info__buy">Comprar ahora</button>
-      <button className="ml-info__cart">Agregar al carrito</button>
+      <button className="ml-info__cart" onClick={onAddToCart}>Agregar al carrito</button>
     </div>
     <div className="ml-info__props">
       <div><strong>Color:</strong> {color || 'No especificado'}</div>

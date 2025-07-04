@@ -34,4 +34,15 @@ public class JsonFileReader {
             throw new DataAccessException("Error reading products from JSON file", e);
         }
     }
+
+    public List<String> readStringListFromFile(String fileName) {
+        try {
+            ClassPathResource resource = new ClassPathResource(fileName);
+            InputStream inputStream = resource.getInputStream();
+            return objectMapper.readValue(inputStream, new TypeReference<List<String>>() {});
+        } catch (IOException e) {
+            log.error("Error reading string list from JSON file: " + fileName, e);
+            throw new DataAccessException("Error reading string list from JSON file: " + fileName, e);
+        }
+    }
 }

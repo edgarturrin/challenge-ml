@@ -13,6 +13,7 @@ const Detail = ({ id }) => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [mainImage, setMainImage] = useState(null);
+  const [cart, setCart] = useState([]);
 
   useEffect(() => {
     const fetchProduct = async () => {
@@ -37,6 +38,11 @@ const Detail = ({ id }) => {
       fetchProduct();
     }
   }, [id]);
+
+  const handleAddToCart = (product) => {
+    setCart(prev => [...prev, product]);
+    alert('Producto agregado al carrito');
+  };
 
   if (loading) {
     return (
@@ -63,33 +69,35 @@ const Detail = ({ id }) => {
   }
 
   return (
-    <>
-      <Header />
-      <div className="ml-detail-layout">
-        <div className="ml-detail-main-row">
-          <ProductGallery 
-            images={product.images} 
-            mainImage={mainImage} 
-            setMainImage={setMainImage} 
-          />
-          <ProductInfo
-            title={product.title}
-            price={product.price}
-            discount={product.discount}
-            installments={product.installments}
-            stock={product.stock}
-            color={product.color}
-            memory={product.memory}
-            features={product.features}
-          />
-          <div className="ml-detail-sidebar">
-            <PaymentMethods payment_methods={product.payment_methods} />
-            <SellerInfo seller={product.seller} />
+    <Header>
+      {({ handleAddToCart, cart }) => (
+        <div className="ml-detail-layout">
+          <div className="ml-detail-main-row">
+            <ProductGallery 
+              images={product.images} 
+              mainImage={mainImage} 
+              setMainImage={setMainImage} 
+            />
+            <ProductInfo
+              title={product.title}
+              price={product.price}
+              discount={product.discount}
+              installments={product.installments}
+              stock={product.stock}
+              color={product.color}
+              memory={product.memory}
+              features={product.features}
+              onAddToCart={() => handleAddToCart(product)}
+            />
+            <div className="ml-detail-sidebar">
+              <PaymentMethods payment_methods={product.payment_methods} />
+              <SellerInfo seller={product.seller} />
+            </div>
           </div>
+          <ProductDescription description={product.description} />
         </div>
-        <ProductDescription description={product.description} />
-      </div>
-    </>
+      )}
+    </Header>
   );
 };
 

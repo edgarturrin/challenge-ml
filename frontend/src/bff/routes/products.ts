@@ -8,7 +8,8 @@ const productService = new ProductService({
 
 router.get('/search', async (req, res) => {
   try {
-    const searchResults = await productService.searchProducts();
+    const { search } = req.query;
+    const searchResults = await productService.searchProducts(search as string);
 
     res.json({
       code: 200,

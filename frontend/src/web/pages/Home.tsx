@@ -3,37 +3,40 @@ import Header from "./components/Header";
 import ProductCard from "./components/ProductCard";
 import LoadingSpinner from "./components/LoadingSpinner";
 import apiService from "../services/api";
+import { useNavigate } from "react-router-dom";
 
 const Home = () => {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const navigate = useNavigate();
 
   useEffect(() => {
-    const fetchProducts = async () => {
-      try {
-        setLoading(true);
-        setError(null);
-        
-        console.log('Obteniendo productos desde BFF...');
-        const response = await apiService.getProducts();
-        setProducts(response.data);
-        console.log(`Productos obtenidos exitosamente (${response.length} productos)`);
-      } catch (err) {
-        console.error('Error al obtener productos:', err);
-        setError('Error al cargar los productos. Por favor, inténtalo de nuevo.');
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    fetchProducts();
+    handleSearch();
+    // eslint-disable-next-line
   }, []);
+
+  const handleSearch = async (searchValue = "") => {
+    try {
+      setLoading(true);
+      setError(null);
+      const response = await apiService.getProducts(searchValue);
+      setProducts(response.data);
+    } catch (err) {
+      if (err.message && (err.message.includes('Product not found') || err.message.includes('404'))) {
+        navigate('/notfound');
+        return;
+      }
+      setError('Error al cargar los productos. Por favor, inténtalo de nuevo.');
+    } finally {
+      setLoading(false);
+    }
+  };
 
   if (loading) {
     return (
       <>
-        <Header />
+        <Header onSearch={handleSearch} />
         <div className="home-container">
           <h1 className="home-title">Productos destacados</h1>
           <LoadingSpinner message="Cargando productos..." />
@@ -45,7 +48,7 @@ const Home = () => {
   if (error) {
     return (
       <>
-        <Header />
+        <Header onSearch={handleSearch} />
         <div className="home-container">
           <h1 className="home-title">Productos destacados</h1>
           <div className="error">{error}</div>
@@ -56,7 +59,7 @@ const Home = () => {
 
   return (
     <>
-      <Header /> 
+      <Header onSearch={handleSearch} />
       <div className="home-container">
         <h1 className="home-title">Productos destacados</h1>
         <div className="home-grid">

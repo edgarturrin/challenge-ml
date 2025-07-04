@@ -23,8 +23,8 @@ public class ProductsController {
     }
 
     @GetMapping("/search")
-    public ResponseEntity<ApiResponse<List<Product>>> search() {
-        List<Product> products = productService.search();
+    public ResponseEntity<ApiResponse<List<Product>>> search(@RequestParam(value = "search", required = false) String search) {
+        List<Product> products = productService.search(search);
         return ResponseEntity.ok(ApiResponse.<List<Product>>builder()
                 .status(HttpStatus.OK.value())
                 .message("Products retrieved successfully")

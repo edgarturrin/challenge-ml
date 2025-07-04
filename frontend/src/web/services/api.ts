@@ -1,4 +1,3 @@
-
 interface RequestOptions {
   headers?: Record<string, string>;
   [key: string]: any;
@@ -32,8 +31,12 @@ class ApiService {
   }
 
   // Obtener todos los productos
-  async getProducts() {
-    return this.request('/api/products/search');
+  async getProducts(search?: string) {
+    let endpoint = '/api/products/search';
+    if (search && search.trim() !== "") {
+      endpoint += `?search=${encodeURIComponent(search)}`;
+    }
+    return this.request(endpoint);
   }
 
   // Obtener un producto específico por ID

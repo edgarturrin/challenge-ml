@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class ProductServicesImp implements ProductService {
@@ -20,8 +21,15 @@ public class ProductServicesImp implements ProductService {
     }
 
     @Override
-    public List<Product> search() {
-        return productRepository.getAllProducts();
+    public List<Product> search(String search) {
+        List<Product> allProducts = productRepository.getAllProducts();
+        if (search == null || search.trim().isEmpty()) {
+            return allProducts;
+        }
+        String searchLower = search.toLowerCase();
+        return allProducts.stream()
+                .filter(p -> p.getTitle() != null && p.getTitle().toLowerCase().contains(searchLower))
+                .collect(Collectors.toList());
     }
 
     @Override

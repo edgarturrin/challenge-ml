@@ -27,9 +27,13 @@ export class ProductService {
     this.gateway = new ApiGateway(apiConfig);
   }
 
-  async searchProducts(): Promise<Product[]> {
+  async searchProducts(search?: string): Promise<Product[]> {
     try {
-      const response = await this.gateway.get<ApiResponse<Product[]>>(`/api-core/products/search`);
+      let endpoint = `/api-core/products/search`;
+      if (search && search.trim() !== "") {
+        endpoint += `?search=${encodeURIComponent(search)}`;
+      }
+      const response = await this.gateway.get<ApiResponse<Product[]>>(endpoint);
       return response.data?.data;
     } catch (error: any) {
       console.error('Error searching products:', error);

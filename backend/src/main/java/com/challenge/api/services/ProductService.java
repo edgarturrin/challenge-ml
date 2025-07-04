@@ -6,6 +6,6 @@ import com.challenge.api.dto.response.ProductDetail;
 import java.util.List;
 
 public interface ProductService {
-    List<Product> search();
+    List<Product> search(String search);
     ProductDetail getById(String id);
 }
